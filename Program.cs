@@ -5,8 +5,8 @@ var app = builder.Build();
 
 app.Use(async (context, next) =>
 {
-    Console.WriteLine($"{context.Request.Method} {context.Request.Path} {context.Response.StatusCode}");
     await next(); 
+    Console.WriteLine($"{context.Request.Method} {context.Request.Path} {context.Response.StatusCode}");
 });
 
 app.UseRewriter(new RewriteOptions().AddRedirect("history", "about"));
