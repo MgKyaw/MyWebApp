@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Rewrite;
 using MyWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddSingleton<WelcomeService>();
+
 var app = builder.Build();
 
 app.Use(async (context, next) =>
