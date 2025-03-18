@@ -2,5 +2,6 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => "Welcome to Contoso!");
+app.MapGet("/about", () => "Contoso was founded in 2000.");
 
 app.Run();
