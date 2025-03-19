@@ -4,7 +4,7 @@ using MyWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IWelcomeService, WelcomeService>();
+builder.Services.AddScoped<IWelcomeService, WelcomeService>();
 
 var app = builder.Build();
 
