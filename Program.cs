@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Rewrite;
+using MyWebApp.Interfaces;
 using MyWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<WelcomeService>();
+builder.Services.AddSingleton<IWelcomeService, WelcomeService>();
 
 var app = builder.Build();
 
@@ -15,7 +16,7 @@ app.Use(async (context, next) =>
 
 app.UseRewriter(new RewriteOptions().AddRedirect("history", "about"));
 
-app.MapGet("/", (WelcomeService welcomeService) => welcomeService.GetWelcomeMessage());
+app.MapGet("/", (IWelcomeService welcomeService) => welcomeService.GetWelcomeMessage());
 app.MapGet("/about", () => "Contoso was founded in 2000.");
 
 app.Run();
