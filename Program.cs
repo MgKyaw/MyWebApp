@@ -16,7 +16,12 @@ app.Use(async (context, next) =>
 
 app.UseRewriter(new RewriteOptions().AddRedirect("history", "about"));
 
-app.MapGet("/", (IWelcomeService welcomeService) => welcomeService.GetWelcomeMessage());
+app.MapGet("/", async (IWelcomeService welcomeService1, IWelcomeService welcomeService2) => 
+    {
+        string message1 = $"Message1: {welcomeService1.GetWelcomeMessage()}";
+        string message2 = $"Message2: {welcomeService2.GetWelcomeMessage()}";
+        return $"{message1}\n{message2}";
+    });
 app.MapGet("/about", () => "Contoso was founded in 2000.");
 
 app.Run();
