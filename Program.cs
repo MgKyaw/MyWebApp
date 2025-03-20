@@ -3,8 +3,7 @@ using MyWebApp.Interfaces;
 using MyWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddScoped<IWelcomeService, WelcomeService>();
+builder.Services.AddTransient<IWelcomeService, WelcomeService>();
 
 var app = builder.Build();
 
